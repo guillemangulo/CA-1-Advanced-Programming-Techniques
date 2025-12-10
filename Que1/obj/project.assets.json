@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/guille/MSc Cybersecurity/Advanced Programming/CA - 1/Que1/Que1.csproj",
+      "projectUniqueName": "/home/guille/MSc Cybersecurity/Advanced Programming/CA1/CA-1-Advanced-Programming-Techniques/Que1/Que1.csproj",
       "projectName": "Que1",
-      "projectPath": "/home/guille/MSc Cybersecurity/Advanced Programming/CA - 1/Que1/Que1.csproj",
+      "projectPath": "/home/guille/MSc Cybersecurity/Advanced Programming/CA1/CA-1-Advanced-Programming-Techniques/Que1/Que1.csproj",
       "packagesPath": "/home/guille/.nuget/packages/",
-      "outputPath": "/home/guille/MSc Cybersecurity/Advanced Programming/CA - 1/Que1/obj/",
+      "outputPath": "/home/guille/MSc Cybersecurity/Advanced Programming/CA1/CA-1-Advanced-Programming-Techniques/Que1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/guille/.nuget/NuGet/NuGet.Config"

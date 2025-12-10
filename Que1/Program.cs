@@ -31,15 +31,15 @@ class Program
                     cb.ShowAllContacts();
                     break;
                 case "3":
-                    Console.Write("Enter mobile number or first name + last name to search: (e.g 870000001 or Guillem Angulo)");
+                    Console.Write("Enter mobile number or first name + last name to search (e.g 870000001 or Guillem Angulo): ");
                     cb.ShowContactDetails(Console.ReadLine());
                     break;
                 case "4":
-                    Console.Write("Enter mobile number or first name + last name to update: (e.g 870000001 or Guillem Angulo)");
+                    Console.Write("Enter mobile number or first name + last name to update (e.g 870000001 or Guillem Angulo): ");
                     cb.UpdateContact(Console.ReadLine());
                     break;
                 case "5":
-                    Console.Write("Enter mobile number or first name + last name to delete: (e.g 870000001 or Guillem Angulo)");
+                    Console.Write("Enter mobile number or first name + last name to delete (e.g 870000001 or Guillem Angulo): ");
                     cb.DeleteContact(Console.ReadLine());
                     break;
                 case "0":
