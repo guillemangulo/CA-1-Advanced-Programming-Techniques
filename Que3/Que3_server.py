@@ -1,0 +1,118 @@
+import socket
+import json
+import sqlite3
+import random
+import datetime
+
+def setup_database():
+    try:
+        connection = sqlite3.connect('dbs_admissions.db')
+        print("Connected with database for setup....")
+        
+        cursor = connection.cursor()
+        #create table if it doesn't exist
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS applications (
+                app_id TEXT PRIMARY KEY,
+                name TEXT,
+                address TEXT,
+                qualifications TEXT,
+                course TEXT,
+                start_date TEXT,
+                submission_time TIMESTAMP
+            )
+        ''')
+        connection.commit()
+        
+    except sqlite3.DatabaseError:
+        print("Database Error during setup....")
+        if connection:
+            connection.rollback()
+    finally:
+        if connection:
+            connection.close()
+
+def generate_application_id():
+    year = datetime.datetime.now().year
+    rand_num = random.randint(1000, 9999)
+    return f"DBS-{year}-{rand_num}"
+
+def save_application_to_db(app_id, application_data):
+    try:
+        connection = sqlite3.connect('dbs_admissions.db')
+        print("Connected with database to insert record....")
+        
+        cursor = connection.cursor()
+        cursor.execute('''
+            INSERT INTO applications (app_id, name, address, qualifications, course, start_date, submission_time)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            app_id, 
+            application_data['name'], 
+            application_data['address'], 
+            application_data['qualifications'], 
+            application_data['course'], 
+            application_data['start_date'],
+            datetime.datetime.now()
+        ))
+        
+        print("Records are inserted.....")
+        connection.commit()
+        return True
+
+    except sqlite3.DatabaseError as e:
+        print(f"Database Error: {e}")
+        if connection:
+            connection.rollback()
+        return False
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+            print("Database connection closed.")
+
+def start_server():
+    host = '127.0.0.1'
+    port = 9999
+    
+    setup_database()
+    
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.bind((host, port))
+        sock.listen()
+        print(f"Server listening on {host}:{port}...")
+
+        while True:
+            conn, addr = sock.accept()
+            print("Received connection from ", addr)
+            
+            try:
+                data = conn.recv(1024)
+                if not data:
+                    break
+                
+                application_data = json.loads(data.decode())
+                app_id = generate_application_id()
+                
+                application_ready = save_application_to_db(app_id, application_data)
+                
+                if application_ready:
+                    print(f"Processed application for {application_data['name']}. Assigned ID: {app_id}")
+                    response = f"Application done! Your Ref Number is: {app_id}"
+                else:
+                    response = "Application Failed due to Database Error."
+
+                conn.sendall(response.encode())
+                
+            finally:
+                conn.close()
+                print(f"Connection with {addr} closed.")
+                
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        sock.close()
+
+if __name__ == "__main__":
+    start_server()
