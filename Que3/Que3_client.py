@@ -2,18 +2,18 @@ import socket
 import json
 
 def get_student_input():
-    print("--- DBS Admission Application ---")
+    print("------DBS Admission Application-------")
     print("Please enter the following details:")
     
     name = input("Full Name: ").strip()
     address = input("Address: ").strip()
     qualifications = input("Educational Qualifications: ").strip()
     
+    course_choice = input("\nEnter course name (exactly as printed below): ").strip()
     print("\nAvailable Courses:")
-    print("1. MSc in Cyber Security")
-    print("2. MSc Information Systems & Computing")
-    print("3. MSc Data Analytics")
-    course_choice = input("\nEnter course name (exactly as printed above): ").strip()
+    print("MSc in Cyber Security")
+    print("MSc Information Systems and Computing")
+    print("MSc Data Analytics")
     
     start_year = input("Intended Start Year (YYYY): ").strip()
     start_month = input("Intended Start Month: ").strip()
@@ -36,22 +36,20 @@ def admission_application():
     if not data['name'] or not data['course']:
         print("Error: Name and Course are mandatory fields.")
         return
-    elif not data["course"] == "MSc in Cyber Security" and not data["course"] == "MSc Information Systems & Computing" and not data["course"] == "MSc Data Analytics":
+    elif not data["course"] == "MSc in Cyber Security" and not data["course"] == "MSc Information Systems and Computing" and not data["course"] == "MSc Data Analytics":
         print("Error: Please enter a valid course")
         return
 
     try:
-        print("\nConnecting to DBS Server...")
+        print("\nConnecting to Server.....")
         
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((host, port))
-        print("Client connected with server....")
+        print("Client connected with server.......")
         
         #convert into json
         data = json.dumps(data)
         sock.sendall(data.encode())
-    
-        print("Data sent. Waiting for confirmation...")
         
         #print the ID
         resp = sock.recv(1024)
@@ -59,7 +57,7 @@ def admission_application():
         print(resp.decode())
 
     except ConnectionError:
-        print("Error: Could not connect to the server...")
+        print("Error: Could not connect to the server........")
         sock.close()
     except Exception as e:
         print(f"An unexpected error occurred: {e}")

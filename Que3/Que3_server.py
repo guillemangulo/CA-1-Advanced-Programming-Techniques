@@ -7,7 +7,7 @@ import datetime
 def setup_database():
     try:
         connection = sqlite3.connect('dbs_admissions.db')
-        print("Connected with database for setup....")
+        print("Connected with database....")
         
         cursor = connection.cursor()
         #create table if it doesn't exist
@@ -25,7 +25,7 @@ def setup_database():
         connection.commit()
         
     except sqlite3.DatabaseError:
-        print("Database Error during setup....")
+        print("Database Error....")
         if connection:
             connection.rollback()
     finally:
@@ -40,8 +40,6 @@ def generate_application_id():
 def save_application_to_db(app_id, application_data):
     try:
         connection = sqlite3.connect('dbs_admissions.db')
-        print("Connected with database to insert record....")
-        
         cursor = connection.cursor()
         cursor.execute('''
             INSERT INTO applications (app_id, name, address, qualifications, course, start_date, submission_time)
@@ -56,15 +54,13 @@ def save_application_to_db(app_id, application_data):
             datetime.datetime.now()
         ))
         
-        print("Records are inserted.....")
+        print("\nRecords are inserted.....")
         connection.commit()
         return True
 
     except sqlite3.DatabaseError as e:
         print(f"Database Error: {e}")
-        if connection:
-            connection.rollback()
-        return False
+        connection.rollback()
     finally:
         if connection:
             cursor.close()
@@ -85,13 +81,8 @@ def start_server():
 
         while True:
             conn, addr = sock.accept()
-            print("Received connection from ", addr)
-            
             try:
                 data = conn.recv(1024)
-                if not data:
-                    break
-                
                 application_data = json.loads(data.decode())
                 app_id = generate_application_id()
                 

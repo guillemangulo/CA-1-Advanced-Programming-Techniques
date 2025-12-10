@@ -4,11 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        ExtensionInfoSystem system = new ExtensionInfoSystem();
+        ExtensionsDB db = new ExtensionsDB();
         bool running = true;
 
         Console.WriteLine("--- File Extension Info System ---");
-        Console.WriteLine("Type an extension (e.g., .mp4 or just mp4) to get info.");
+        Console.WriteLine("Type an extension (e.g., .mp4 or mp4) to get info");
         Console.WriteLine("Type 'exit' to quit.\n");
 
         while (running)
@@ -28,7 +28,7 @@ class Program
             }
             else
             {
-                string result = system.GetDescription(input);
+                string result = db.GetDescription(input);
                 Console.WriteLine($"Result: {result}\n");
             }
         }

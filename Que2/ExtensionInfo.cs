@@ -1,43 +1,43 @@
 using System;
-public class ExtensionInfoSystem
+public class ExtensionsDB
 {
     
-    private Dictionary<string, string> _extensionDatabase;
+    private Dictionary<string, string> _extensionsDatabase;
 
-    public ExtensionInfoSystem()
+    public ExtensionsDB()
     {
-        _extensionDatabase = new Dictionary<string, string>();
+        _extensionsDatabase = new Dictionary<string, string>();
         LoadData();
     }
 
     private void LoadData()
     {
-        _extensionDatabase.Add(".txt", "Plain Text File");
-        _extensionDatabase.Add(".doc", "Microsoft Word Document (Legacy)");
-        _extensionDatabase.Add(".docx", "Microsoft Word Open XML Document");
-        _extensionDatabase.Add(".pdf", "Portable Document Format");
-        _extensionDatabase.Add(".xls", "Microsoft Excel Spreadsheet (Legacy)");
-        _extensionDatabase.Add(".xlsx", "Microsoft Excel Open XML Spreadsheet");
-        _extensionDatabase.Add(".json", "JavaScript Object Notation");
-        _extensionDatabase.Add(".csv", "Comma-Separated Values");
-        _extensionDatabase.Add(".jpg", "JPEG Image");
-        _extensionDatabase.Add(".jpeg", "JPEG Image");
-        _extensionDatabase.Add(".png", "Portable Network Graphics");
-        _extensionDatabase.Add(".gif", "Graphics Interchange Format");
-        _extensionDatabase.Add(".bmp", "Bitmap Image File");
-        _extensionDatabase.Add(".svg", "Scalable Vector Graphics");
-        _extensionDatabase.Add(".mp3", "MP3 Audio File");
-        _extensionDatabase.Add(".wav", "Waveform Audio File");
-        _extensionDatabase.Add(".flac", "Free Lossless Audio Codec");
-        _extensionDatabase.Add(".mp4", "MPEG-4 Video File");
-        _extensionDatabase.Add(".mov", "Apple QuickTime Movie");
-        _extensionDatabase.Add(".avi", "Audio Video Interleave");
-        _extensionDatabase.Add(".mkv", "Matroska Video Container");
-        _extensionDatabase.Add(".zip", "ZIP Compressed Archive");
-        _extensionDatabase.Add(".rar", "RAR Compressed Archive");
-        _extensionDatabase.Add(".exe", "Windows Executable File");
-        _extensionDatabase.Add(".cs", "C# Source Code File");
-        _extensionDatabase.Add(".html", "HyperText Markup Language");
+        _extensionsDatabase.Add(".txt", "Plain Text File");
+        _extensionsDatabase.Add(".doc", "Microsoft Word Document (Legacy)");
+        _extensionsDatabase.Add(".docx", "Microsoft Word Open XML Document");
+        _extensionsDatabase.Add(".pdf", "Portable Document Format");
+        _extensionsDatabase.Add(".xls", "Microsoft Excel Spreadsheet (Legacy)");
+        _extensionsDatabase.Add(".xlsx", "Microsoft Excel Open XML Spreadsheet");
+        _extensionsDatabase.Add(".json", "JavaScript Object Notation");
+        _extensionsDatabase.Add(".csv", "Comma-Separated Values");
+        _extensionsDatabase.Add(".jpg", "JPEG Image");
+        _extensionsDatabase.Add(".jpeg", "JPEG Image");
+        _extensionsDatabase.Add(".png", "Portable Network Graphics");
+        _extensionsDatabase.Add(".gif", "Graphics Interchange Format");
+        _extensionsDatabase.Add(".bmp", "Bitmap Image File");
+        _extensionsDatabase.Add(".svg", "Scalable Vector Graphics");
+        _extensionsDatabase.Add(".mp3", "MP3 Audio File");
+        _extensionsDatabase.Add(".wav", "Waveform Audio File");
+        _extensionsDatabase.Add(".flac", "Free Lossless Audio Codec");
+        _extensionsDatabase.Add(".mp4", "MPEG-4 Video File");
+        _extensionsDatabase.Add(".mov", "Apple QuickTime Movie");
+        _extensionsDatabase.Add(".avi", "Audio Video Interleave");
+        _extensionsDatabase.Add(".mkv", "Matroska Video Container");
+        _extensionsDatabase.Add(".zip", "ZIP Compressed Archive");
+        _extensionsDatabase.Add(".rar", "RAR Compressed Archive");
+        _extensionsDatabase.Add(".exe", "Windows Executable File");
+        _extensionsDatabase.Add(".cs", "C# Source Code File");
+        _extensionsDatabase.Add(".html", "HyperText Markup Language");
     }
 
     public string GetDescription(string extension)
@@ -54,7 +54,7 @@ public class ExtensionInfoSystem
             formattedExtension = "." + formattedExtension;
         }
 
-        if (_extensionDatabase.TryGetValue(formattedExtension, out string description))
+        if (_extensionsDatabase.TryGetValue(formattedExtension, out string description))
         {
             return description;
         }
@@ -65,11 +65,11 @@ public class ExtensionInfoSystem
             string res = Console.ReadLine();
             if (res == "Yes" || res == "Y" || res == "yes" || res == "y")
             {
-                if (!_extensionDatabase.ContainsKey(formattedExtension))
+                if (!_extensionsDatabase.ContainsKey(formattedExtension))
                 {
                     Console.WriteLine("\nHow would you like to save this extension? (e.g Portable Document Format)");
                     string newDescription = Console.ReadLine();
-                    _extensionDatabase.Add(formattedExtension, newDescription);
+                    _extensionsDatabase.Add(formattedExtension, newDescription);
                     return $"Success! Saved: {newDescription}";
                 }
             }
