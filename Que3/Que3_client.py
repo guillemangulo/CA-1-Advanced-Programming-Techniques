@@ -1,3 +1,4 @@
+#CLIENT FILE. Give the info of the application
 import socket
 import json
 
@@ -68,3 +69,6 @@ def admission_application():
 
 if __name__ == "__main__":
     admission_application()
+
+
+    

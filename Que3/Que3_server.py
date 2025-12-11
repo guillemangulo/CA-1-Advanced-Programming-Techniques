@@ -1,3 +1,4 @@
+#SERVER file. Recieve the info of the application
 import socket
 import json
 import sqlite3
@@ -107,3 +108,5 @@ def start_server():
 
 if __name__ == "__main__":
     start_server()
+
+    
