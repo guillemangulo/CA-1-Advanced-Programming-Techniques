@@ -10,11 +10,11 @@ def get_student_input():
     address = input("Address: ").strip()
     qualifications = input("Educational Qualifications: ").strip()
     
-    course_choice = input("\nEnter course name (exactly as printed below): ").strip()
     print("\nAvailable Courses:")
     print("MSc in Cyber Security")
     print("MSc Information Systems and Computing")
     print("MSc Data Analytics")
+    course_choice = input("\nEnter course name (exactly as printed above): ").strip()
     
     start_year = input("Intended Start Year (YYYY): ").strip()
     start_month = input("Intended Start Month: ").strip()
