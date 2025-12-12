@@ -15,14 +15,13 @@ def scrape_hotel_page(url, hotel_name):
 
     soup = BeautifulSoup(response.text, "html.parser")
 
-    #after reviewing html code of pages info is there
+    #info is there in that case 
     cards = soup.select(".hotel-card")
 
     results = []
 
     for card in cards:
         #inside .hotel-description we have room info
-        
         name_tag = card.select_one(".hotel-description")
         
         if name_tag:

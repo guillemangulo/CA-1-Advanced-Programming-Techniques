@@ -24,7 +24,8 @@ This repository contains the source code for the Continuous Assessment 1 (CA-1).
 
 ### [Que4](./Que4) 
 * **Language:** Python
-* **Description:**This system extracts data from target websites to collect hotel rooms information. The collected data is processed and exported into a structured CSV file for further analysis.
+* **Description:** This system extracts data from target websites to collect hotel rooms information. The collected data is processed and exported into a structured CSV file for further analysis.
 
 
-*Student Name: [Guillem Angulo Hidalgo]*
+
+*Author: Guillem Angulo Hidalgo*

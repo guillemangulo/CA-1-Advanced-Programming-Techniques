@@ -35,7 +35,7 @@ def setup_database():
 
 def generate_application_id():
     year = datetime.datetime.now().year
-    rand_num = random.randint(1000, 9999)
+    rand_num = random.randint(1000, 9999)       #python library for generating random nums
     return f"DBS-{year}-{rand_num}"
 
 def save_application_to_db(app_id, application_data):
@@ -55,9 +55,9 @@ def save_application_to_db(app_id, application_data):
             datetime.datetime.now()
         ))
         
-        print("\nRecords are inserted.....")
-        connection.commit()
-        return True
+        print("\nRecords are inserted.....") 
+        connection.commit() 
+        return True   
 
     except sqlite3.DatabaseError as e:
         print(f"Database Error: {e}")
@@ -65,7 +65,7 @@ def save_application_to_db(app_id, application_data):
     finally:
         if connection:
             cursor.close()
-            connection.close()
+            connection.close()      #always in finally block
             print("Database connection closed.")
 
 def start_server():

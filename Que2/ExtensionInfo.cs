@@ -60,7 +60,7 @@ public class ExtensionsDB
         }
         else
         {
-            Console.WriteLine("Unknown extension. No information is stored on that file type yet.");
+            Console.WriteLine("No information is stored on that file type....");
             Console.WriteLine("\nWould you like to add this new extension? (Yes/No)");
             string res = Console.ReadLine();
             if (res == "Yes" || res == "Y" || res == "yes" || res == "y")

@@ -20,7 +20,7 @@ class Program
                 continue;
             }
 
-            if (input.Trim().Equals("exit", StringComparison.OrdinalIgnoreCase))
+            if (input.Equals("exit"))
             {
                 running = false;
             }
