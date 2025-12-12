@@ -1,4 +1,4 @@
-# Advanced Programming Techniques - CA1
+# CA1 - Advanced Programming Techniques
 
 **Institution:** Dublin Business School (DBS)  
 **Program:** MSc in Cyber Security  
