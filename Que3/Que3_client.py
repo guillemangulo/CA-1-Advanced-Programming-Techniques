@@ -1,4 +1,4 @@
-#CLIENT FILE. Give the info of the application
+#CLIENT FILE. Give the info of the application to the serverr
 import socket
 import json
 

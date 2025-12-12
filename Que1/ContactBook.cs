@@ -15,9 +15,7 @@ public class ContactBook {
 
         for (int i = 0; i < 20; ++i)
         {
-            // Note: Since we don't have validation logic in the Property set yet, 
-            // simple numbers work fine. If you add validation later, ensure this format matches it.
-            string phNum = (870000000 + i).ToString();
+            string phoneNumber = (870000000 + i).ToString();
             string emailAddress = $"{firstNames[i].ToLower()}.{lastNames[i].ToLower()}@CA1example.com";   
             DateTime birth = new DateTime(1980 + (i % 20), 1 + (i % 12), 1 + (i % 28));
 
@@ -26,7 +24,7 @@ public class ContactBook {
                 lastNames[i],
                 companies[i],
                 emailAddress,
-                phNum,
+                phoneNumber,
                 birth
             ));
         }
@@ -41,7 +39,6 @@ public class ContactBook {
     public void ShowAllContacts() 
     {
         Console.WriteLine("Showing all contacts...\n");
-        // Fixed: .Count is a property for List, not a method .Count()
         for(int i = 0; i < _contacts.Count; ++i)
         {
             Console.WriteLine("\n" + _contacts[i].ToString());
@@ -56,9 +53,9 @@ public class ContactBook {
         
     */
     
-    public Contact FindContact(string phNum) 
+    public Contact FindContact(string phoneNumber) 
     {
-        return _contacts.FirstOrDefault(contact => contact.PhoneNumber == phNum);
+        return _contacts.FirstOrDefault(contact => contact.PhoneNumber == phoneNumber);
     }
 
     public Contact FindContact(string fn, string ln)
@@ -70,10 +67,10 @@ public class ContactBook {
 
     public void ShowContactDetails(string searchTerm) 
     {
-        // first try with mobile
+        //first try with mobile
         Contact contact = FindContact(searchTerm);
        
-        // second try first + last name
+        //second try first + last name
         if (contact == null && searchTerm.Contains(" "))    // if contains a space, probably is {firstName} {lastName}
         {
             var parts = searchTerm.Split(" ");
@@ -104,10 +101,10 @@ public class ContactBook {
 
     public void UpdateContact(string searchTerm)
     {
-           // first try with mobile
+           //first try with mobile
         Contact contact = FindContact(searchTerm);
        
-        // second try first + last name
+        //second try first + last name
         if (contact == null && searchTerm.Contains(" "))    // if contains a space, probably is {firstName} {lastName}
         {
             var parts = searchTerm.Split(" ");
@@ -140,10 +137,10 @@ public class ContactBook {
 
     public void DeleteContact(string searchTerm)
     {
-        // first try with mobile
+        //first try with mobile
         Contact contact = FindContact(searchTerm);
        
-        // second try first + last name
+        //second try first + last name
         if (contact == null && searchTerm.Contains(" "))    // if contains a space, probably is {firstName} {lastName}
         {
             var parts = searchTerm.Split(" ");

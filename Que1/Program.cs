@@ -58,7 +58,7 @@ class Program
         try
         {
             Console.Write("First Name: ");
-            string fn = Console.ReadLine().Trim();
+            string fn = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(fn)) throw new Exception("First Name cannot be empty.");
             if (fn.Length < 2) throw new Exception("Please enter a real name");
 
@@ -68,22 +68,22 @@ class Program
             if (ln.Length < 2) throw new Exception("Please enter a real surname");
 
             Console.Write("Company: ");
-            string comp = Console.ReadLine().Trim();
+            string comp = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(comp)) throw new Exception("Company cannot be empty.");
 
             Console.Write("Mobile (9 digits): ");
-            string mob = Console.ReadLine().Trim();
+            string mob = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(mob)) throw new Exception("Mobile number cannot be empty.");
             if (mob.Length != 9) throw new Exception("Enter a 9 digits mobile phone");
 
             Console.Write("Email: ");
-            string em = Console.ReadLine().Trim();
+            string em = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(em)) throw new Exception("Email cannot be empty.");
             if (!em.Contains("@") || !em.Contains(".")) throw new Exception("Invalid email format. Must contain '@' and '.'.");
 
 
             Console.Write("Birthdate (yyyy-mm-dd): ");
-            string dobInput = Console.ReadLine()?.Trim();
+            string dobInput = Console.ReadLine();
             
             
             if (!DateTime.TryParseExact(dobInput, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dob))

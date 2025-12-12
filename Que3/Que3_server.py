@@ -90,16 +90,15 @@ def start_server():
                 application_ready = save_application_to_db(app_id, application_data)
                 
                 if application_ready:
-                    print(f"Processed application for {application_data['name']}. Assigned ID: {app_id}")
-                    response = f"Application done! Your Ref Number is: {app_id}"
+                    response = f"Application done with ref num: {app_id}"
                 else:
-                    response = "Application Failed due to Database Error."
+                    response = "Application Failed....."
 
                 conn.sendall(response.encode())
                 
             finally:
                 conn.close()
-                print(f"Connection with {addr} closed.")
+                print(f"Connection with {addr} closed....")
                 
     except Exception as e:
         print(f"Error: {e}")

@@ -50,11 +50,12 @@ def scrape_hotel_page(url, hotel_name):
 
 def save_to_csv(data, filename):
   
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    filepath = os.path.join(script_dir, filename)
+    current = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(current, filename)
 
     with open(filepath, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["Hotel", "Room", "Price", "URL"])
+        headers = ["Hotel", "Room", "Price", "URL"]
+        writer = csv.DictWriter(f, fieldnames=headers)
         writer.writeheader()
         writer.writerows(data)
 
@@ -62,12 +63,16 @@ def save_to_csv(data, filename):
 
 def read_csv(filename):
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    filepath = os.path.join(script_dir, filename)
+    current = os.path.dirname(os.path.abspath(__file__))
+    filepath = os.path.join(current, filename)
 
     with open(filepath, "r") as f:
         reader = csv.DictReader(f)
-        return list(reader)
+        hotels = []
+
+        for row in reader:
+            hotels.append(row)
+        return hotels
 
 
 def main():
@@ -79,20 +84,21 @@ def main():
     data.extend(scrape_hotel_page(url1, "Hotel 1"))
     data.extend(scrape_hotel_page(url2, "Hotel 2"))
 
-    #save in CSV
-    csv_file = "hotel_data.csv"
-    save_to_csv(data, csv_file)
+    #save in CSV 
+    csv_file = "hotel_data.csv"  
+    save_to_csv(data, csv_file) 
 
     #show in terminal
     print("\nCSV created...")
     rows = read_csv(csv_file)
-    for row in rows:
+    for row in rows: 
         print(row)
-
+ 
 
 if __name__ == "__main__":
     main()
-
+ 
+  
 
 
 

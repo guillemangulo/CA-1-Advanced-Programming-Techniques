@@ -47,7 +47,7 @@ public class ExtensionsDB
             return "Error: Input cannot be empty.";
         }
 
-        // in case user do not put the value with "." e.g .pdf, add it
+        //in case user do not put the value with "." e.g .pdf, add it
         string formattedExtension = extension.Trim();
         if (!formattedExtension.StartsWith("."))    
         {
@@ -70,7 +70,7 @@ public class ExtensionsDB
                     Console.WriteLine("\nHow would you like to save this extension? (e.g Portable Document Format)");
                     string newDescription = Console.ReadLine();
                     _extensionsDatabase.Add(formattedExtension, newDescription);
-                    return $"Success! Saved: {newDescription}";
+                    return $"{formattedExtension} saved as: {newDescription}";
                 }
             }
             return "Action cancelled";

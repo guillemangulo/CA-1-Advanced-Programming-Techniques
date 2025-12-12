@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+//entry point of the program
 class Program
 {
     static void Main(string[] args)
@@ -7,13 +6,12 @@ class Program
         ExtensionsDB db = new ExtensionsDB();
         bool running = true;
 
-        Console.WriteLine("--- File Extension Info System ---");
-        Console.WriteLine("Type an extension (e.g., .mp4 or mp4) to get info");
-        Console.WriteLine("Type 'exit' to quit.\n");
+        Console.WriteLine("Welcome to File extension info system!");
+        Console.WriteLine("In case you want to quit, type 'exit'\n");
 
         while (running)
         {
-            Console.Write("Enter extension: ");
+            Console.Write("Enter extension (e.g .mp4 or mp4): ");
             string input = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(input))
@@ -29,7 +27,7 @@ class Program
             else
             {
                 string result = db.GetDescription(input);
-                Console.WriteLine($"Result: {result}\n");
+                Console.WriteLine($"{result}\n");
             }
         }
     }
